@@ -130,12 +130,24 @@ Click **Save** in the top right.
 
 .. image:: images/final.png
 
-Click **Execute** and select the following:
+
+Click **Execute** in the top right and select the following:
 
 .. image:: images/execute.png
+
+Click **Execute**.
+
+
+You can now follow the Runbook and watch it execute the different Tasks.
+
+.. image:: images/run.png
+
+The tabs at the bottom show the individual tasks, there the Details of the run and the output can be viewed. It will show multiple rows on endpoints with multiple IPs.
+
 
 Takeaways
 +++++++++
 
-- Here is where we summarize any key takeaways from the module
-- Such as how a Nutanix feature used in the lab delivers value
+- Runbooks can be customized for anything that can be ran on the server itself, from simple shell scripts to whole binaries
+- Decision points add flexiblity to react to different scenarios that can occure on the endpoint
+- Variables and Endpoints in combination should be used to keep the Runbooks as generic as possible, they can then be re-used for different environments or use cases
