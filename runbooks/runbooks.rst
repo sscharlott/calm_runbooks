@@ -31,41 +31,108 @@ Create Runbook for Windows VMs
 Create Runbook for Linux VMs
 +++++++++++++++++++++
 
-+ Add Task
+Click |runbooks_menu| > *+ Create Runbook*
 
-Task Name: Check OpenSSH installed
-Type: Decision
-Script Type: Shell
-Endpoint: *leave empty*
-Credential: *leave empty*
-Script: rpm -qa | grep -i openssh-server
+.. |runbooks_menu| image:: images/runbooks_menu.png
 
-current Release: 13
-new Release: 21
+Fill out the following fields:
+
+  - **Name** - log_cleaner
+  - **Description** - Cleanup logs for Linux VMs
+  - **Project** - default
+  - **Endpoint** - endpoint_linux_vm
+
+Click **Proceed** and **Configuration** on the top middle of the window
+
+Here we need to add two Variables which will be used in the Runbook. Click on **Add/Edit Variables** > **+ Add Variable**.
+
+  - **Name** - log_path
+  - **Data Type** - String
+  - **Value** - /var/log
+  - **Show Additional Options** - Tick **Mark this variable mandatory**
+
+Click **+Add Variable** to add the second Variable.
+
+  - **Name** - size_limit
+  - **Data Type** - Integer
+  - **Value** - 102400
+
+Click the |runtime| to make sure both Variables can be edited when the Runbook is being executed.
+
+.. |runtime| image:: images/runtime.png
+
+.. image:: images/variables.png
+
+Click **Done**.
+
+Click **Editor** in the top middle and **+ Add Task**
+
+.. note::
+  This is where we can create the workflow for the Runbook. Each Task is ran individually. It is possible for execute type Tasks to run against endpoint with multiple IPs, Decision Tasks currently can only run agains single IP endpoints though, this is because each task is ran individually against the endpoint, for multiple IP endpoints we could end up with decisions that include true as well as false.
+
+Update the first Task as following:
+
+  - **Task Name** - CheckDir
+  - **Type** - Decision
+  - **Script Type** - Shell
+  - **Script** - cd @@{log_path}@@
+
+.. image:: images/first_task.png
 
 
-False
+Under **False** click **Add Task** and configure it:
 
-Add Task
-Task Name: Check OpenSSH installed false
-Type: Execute
-Script Type: EScript
-Endpoint: *leave empty*
-Credential: *leave empty*
-Script: print "no openssh installed, nothing to do"
+  - **Task Name** - CheckDir_False
+  - **Type** - Execute
+  - **Script Type** - EScript
+  - **Script** - print "Given Logs Directory doesn't exists"
 
+Under **True** click **Add Task** and configure it:
 
-True
+  - **Task Name** - CheckDir_True
+  - **Type** - Set Variable
+  - **Script Type** - Shell
+  - **Script** - echo "size_before_cleanup="$(sudo du -d 0 @@{log_path}@@ | awk  "{print $1}")
+  - **Output** - size_before_cleanup
 
-Add Task
-Task Name: Check OpenSSH installed true
-Type: Decision
-Script Type: Shell
-Endpoint: *leave empty*
-Credential: *leave empty*
-Script: current=`rpm -qi openssh | grep Release | awk '{print $3}' | sed -e s/.el7_4//g`; if [ $current -ge "14" ]; then echo "Version is OK"; else (exit 1) fi
+Click **Add Task** and configure it:
 
+  - **Task Name** - Cleanup
+  - **Type** - Execute
+  - **Script Type** - Shell
+  - **Script**
 
+.. code-block:: bash
+   :linenos:
+
+   #!/bin/bash
+   if [[ $(sudo du -d 0 @@{log_path}@@ | awk  '{print $1}') -gt @@{size_limit}@@ ]]; then
+    echo "INFO: Log size is more than expected. Clearing up old logs..."
+    sudo rm -f @@{log_path}@@/*\.log\.*
+   fi
+
+Click **Add Task** and configure it:
+
+  - **Task Name** - StoreLogsSizeAfterCleanup
+  - **Type** - Set Variable
+  - **Script Type** - Shell
+  - **Script** - echo "size_after_cleanup="$(sudo du -d 0 @@{log_path}@@ | awk  "{print $1}")
+  - **Output** - size_after_cleanup
+
+Click **Add Task** and configure it:
+
+  - **Task Name** - FinalOutput
+  - **Type** - Execute
+  - **Script Type** - EScript
+  - **Script** - print 'logs size changed from @@{size_before_cleanup}@@ => @@{size_after_cleanup}@@'
+
+Click **Save** in the top right.
+
+.. image:: images/final.png
+
+Click **Execute** and select the following:
+
+.. image:: images/execute.png
 
 Takeaways
 +++++++++
