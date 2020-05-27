@@ -97,7 +97,7 @@ We will now create a basic Service which is needed for the next steps
 #. Fill out the following fields:
 
    - **Service Name** - MyVM
-   - **Name** - MyVM
+   - **Name** - VM1
    - **Cloud** - Nutanix
    - **OS** - Linux
    - **VM Name** -*Initials*-MyVM
