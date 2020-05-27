@@ -15,7 +15,7 @@
   :name: _optionallabs
   :hidden:
 
-  optionallabs/api_endpoint
+  optionallabs/blueprint
 
 
 .. _getting_started:
