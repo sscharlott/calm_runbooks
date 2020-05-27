@@ -8,7 +8,7 @@ Runbooks
 Overview
 ++++++++
 
-This Lab will show you how to create a Runbook for Linux and Windows VMs. We will create a simple Runbook that can trigger Windows Updates and a more complex Runbook for the Linux Endpoints which includes the decision making process.
+This Lab will show you how to create a Runbook. We will create a Runbook for a Linux Endpoint which includes the decision making process. Runbooks can be ran against any endpoint as long as the authentication and commands within the Runbooks are supported. Runbooks then execute the Tasks in the defined order. Tasks can include execute, set variable and http tasks which is very similar to Calm, but they also support Delays, Decisions and Loops, we will be using some of those in the exercise below.
 
 Get Started
 ++++++++++++++++++++++
@@ -24,11 +24,7 @@ Click |hamburger_menu| **> Services > Calm >** |endpoints_menu|
 
 Here you can see the endpoints we create in the previous exercise, we will be using both of them for our Runbooks.
 
-Create Runbook for Windows VMs
-++++++++++++++++++++++
-
-
-Create Runbook for Linux VMs
+Create Runbook
 +++++++++++++++++++++
 
 Click |runbooks_menu| > *+ Create Runbook*

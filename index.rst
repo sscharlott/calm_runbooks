@@ -11,11 +11,11 @@
 
 .. toctree::
   :maxdepth: 2
-  :caption: Hackathon
-  :name: _hackathon
+  :caption: Optional Labs
+  :name: _optionallabs
   :hidden:
 
-  hackathon/hackathon
+  optionallabs/api_endpoint
 
 
 .. _getting_started:
@@ -40,7 +40,9 @@ Agenda
    - RunBook for Windows patching
    - RunBook to scan RPMs on Linux
 
-3. Hackathon Task
+3. Optional Labs
+
+   - Create Endpoint via API in a Blueprint
 
 
 Initial Setup

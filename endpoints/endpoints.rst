@@ -8,8 +8,7 @@ Endpoints
 Overview
 ++++++++
 
-This Lab will show you how to create an Endpoint for Linux and Windows VMs. Endpoints are used by Runbooks to connect to the VM and execute the defined tasks.
-
+This Lab will show you how to create an Endpoint for Linux VMs. Endpoints are used by Runbooks to connect to the VM and execute the defined tasks. In the example below we will be using SSH keys for authentication, Endpoints can also be configured to use a username and password for authentication. Endpoints are also available within Calm Blueprints now, this gives the abiltity to address non local services as shown in the exersise below.
 
 Get Started
 ++++++++++++++++++++++
@@ -28,7 +27,7 @@ Here you can see two Applications that are being used in this exercise:
 - linux_vms
 - windows_vms
 
-Create Endpoint for Linux VMs
+Create Endpoint 
 ++++++++++++++++++++++
 
 First we will create an Endpoint for our Linux VMs.
@@ -99,39 +98,10 @@ Click **Save**.
 
 We now have an Endpoint which can be used by a Runbook to access all Linux VMs. 
 
-Create Endpoint for Windows VMs
+Endpoints within Calm
 ++++++++++++++++++++++
 
-We will now create an Endpoint for our Windows VMs.
-Rather than a Keypair we will use the Admin User Account, we still need to collect the IP addresses from our Windows VMs.
 
-**IP Addresses**:
-
-Click **windows_vms** in the App Menu.
-
-Click **Services** in the top Menu and expand the VMs by clicking |expand|.
-
-.. |expand| image:: images/expand.png
-
-Click on each Service and note down the IP Address which will be displayed on the right hand side. 
-
------------------------------------------------------
-
-Click |endpoints_menu| **+ Create Endpoint**.
-
-.. |endpoints_menu| image:: images/endpoints_menu.png
-
-Fill out the following fields:
-
-  - **Name** - endpoint_windows_vms
-  - **Description** - Endpoint for all Windows VMs
-  - **IP Addresses** - *Insert the IPs you noted down earlier*
-  - **Credentials - Username** - Administrator
-  - **Credentials - Password** - SSH Private Key
-
-Click **Save**.
-
-We now have an Endpoint which can be used by a Runbook to access all Windows VMs.
 
 Takeaways
 +++++++++
