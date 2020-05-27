@@ -140,7 +140,7 @@ Click **Execute**.
 
 You can now follow the Runbook and watch it execute the different Tasks.
 
-.. image:: images/run.png
+.. figure:: images/run.png
 
 The tabs at the bottom show the individual tasks, there the Details of the run and the output can be viewed. It will show multiple rows on endpoints with multiple IPs.
 
