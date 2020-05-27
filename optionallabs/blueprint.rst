@@ -33,7 +33,7 @@ You will create a new, blank Blueprint.
 
 #. Fill out the following fields and click **Proceed**:
 
-   - **Name** - *Initials*-Endpoint
+   - **Name** - MyVM-*Initials*
    - **Description** - My First Endpoint Blueprint
    - **Project** - *Initials*-Calm
 
@@ -179,6 +179,67 @@ Testing the Endpoint-Task
 .. figure:: images/variableset.png
 
 As you can see the Content of the File is pushed into the Variable.
+
+
+Create Endpoints Automatically leveraging our API
+++++++++++++++++++++++++++
+
+Go back into the Blueprint Menu Clicking |blueprint_menu| > **MyVM**-*initials*
+
+.. |blueprint_menu| image:: images/blueprint_menu.png
+
+Click **Services** > **MyVM** > **Package** > **Install**
+Now add another Task by clicking the **+ Task** and add the following info:
+   - **Task Name** - create_endpoint
+   - **Type** - Set Variable
+
+Click **Browse Library**, select **api_create_endpoint**, click **Select** and click **Copy** in the next window.
+
+.. figure:: images/add_task_create_endpoint.png
+
+.. note::
+
+  When you look at the script field you can see a comment that asks you to update two Variables if required, always check Library scripts for those.. we can leave the defaults for our use case as we are using Linux and the cred_user we created earlier is called centos as well.
+
+We will now add another script under **Package** > **Uninstall** to make sure the endpoints get removed during delete.
+Click **+ Task** in the Package Uninstall section just below the Install section and complete the following fields:
+   - **Task Name** - remove_endpoint
+   - **Type** - Execute 
+
+Click **Browse Library**, select **api_remove_endpoint**, click **Select** and click **Copy** in the next window.
+
+.. figure:: images/remove_endpoint.png
+
+Click |save| and then |launch|
+
+.. |save| image:: images/save.png
+
+.. |launch| image:: images/launch.png
+
+**Name of the Application** - *initials*_VM_wihtEndpoints
+
+Calm will now Provision your VM, you can watch the progress in the **Audit** tab.
+
+.............................
+
+Once completed and the App shows |running| go into the Endpoint Menu by clicking |endpoint_menu|.
+
+.. |endpoint_menu| image:: images/endpoints_menu.png
+
+.. |running| image:: images/running.png
+
+
+Here you can now see that the Endpoint **Endpoint**-*initials*-myvm was created automatically.
+
+.............................
+
+Now let us check if the Endpoint get deleted automatically as well.
+
+Click |app_menu| and select the App you just deployed, now click **Action** > **Delete** and **Confirm**.
+
+Once the delete has completed go back into the Endpoints Menu, as you can see the Endpoint was removed as well.
+
+.. |app_menu| image:: images/app_menu.png
 
 
 Takeaways

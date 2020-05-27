@@ -81,7 +81,7 @@ Click |endpoints_menu| **+ Create Endpoint**.
 
 Fill out the following fields:
 
-  - **Name** - endpoint_linux_vms
+  - **Name** - *initials*_endpoint
   - **Description** - Endpoint for all Linux VMs
   - **IP Addresses** - *Insert the IPs you noted down earlier*
   - **Credentials - Username** - centos
@@ -97,10 +97,6 @@ Click **Save**.
   The Public Key needs to be defined in the Blueprint and added to the ssh-authorized-keys file, this is already done and not part of this exercise, but still important to know.
 
 We now have an Endpoint which can be used by a Runbook to access all Linux VMs. 
-
-Endpoints within Calm
-++++++++++++++++++++++
-
 
 
 Takeaways

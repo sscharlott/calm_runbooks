@@ -33,10 +33,10 @@ Click |runbooks_menu| > *+ Create Runbook*
 
 Fill out the following fields:
 
-  - **Name** - log_cleaner
+  - **Name** - *initials*_log_cleaner
   - **Description** - Cleanup logs for Linux VMs
   - **Project** - default
-  - **Endpoint** - endpoint_linux_vm
+  - **Endpoint** - *initials*_endpoint
 
 Click **Proceed** and **Configuration** on the top middle of the window
 
