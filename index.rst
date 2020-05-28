@@ -32,10 +32,7 @@ Agenda
 
    - RunBook for Windows patching
    - RunBook to scan RPMs on Linux
-
-3. Optional Labs
-
-   - Create Endpoint via API in a Blueprint
+   - Using Endpoints in Blueprints and creating Endpoints by API
 
 
 Initial Setup
