@@ -1,20 +1,13 @@
 .. title:: Nutanix Calm Runbooks and Endpoints
 
 .. toctree::
-  :maxdepth: 2
+  :maxdepth: 3
   :caption: Labs
   :name: _labs
   :hidden:
 
   endpoints/endpoints
   runbooks/runbooks
-
-.. toctree::
-  :maxdepth: 2
-  :caption: Optional Labs
-  :name: _optionallabs
-  :hidden:
-
   optionallabs/blueprint
 
 
