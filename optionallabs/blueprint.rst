@@ -244,3 +244,6 @@ Once the delete has completed go back into the Endpoints Menu, as you can see th
 
 Takeaways
 +++++++++
+
+- Don't do it twice, automate it.. anything that is done via the GUI can also be automated via the APIs
+- Endpoints are a great way to include external services, other VMs or services like LDAP and DNS
