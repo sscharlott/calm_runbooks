@@ -22,10 +22,8 @@ Click |hamburger_menu| **> Services > Calm >** |app_menu|
 
 .. |app_menu| image:: images/app_menu.png
 
-Here you can see two Applications that are being used in this exercise:
+Here you can see one Application that is being used in this exercise: **linux_vms**
 
-- linux_vms
-- windows_vms
 
 Create Endpoint 
 ++++++++++++++++++++++
