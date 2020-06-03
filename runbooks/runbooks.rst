@@ -22,7 +22,7 @@ Click |hamburger_menu| **> Services > Calm >** |endpoints_menu|
 
 .. |endpoints_menu| image:: images/endpoints_menu.png
 
-Here you can see the endpoints we create in the previous exercise, we will be using both of them for our Runbooks.
+Here you can see the endpoint we created in the previous exercise, we will be using it for our Runbook.
 
 Create Runbook
 +++++++++++++++++++++
@@ -35,7 +35,7 @@ Fill out the following fields:
 
   - **Name** - *initials*_log_cleaner
   - **Description** - Cleanup logs for Linux VMs
-  - **Project** - default
+  - **Project** - BootcampInfra
   - **Endpoint** - *initials*_endpoint
 
 Click **Proceed** and **Configuration** on the top middle of the window
@@ -81,15 +81,25 @@ Under **False** click **Add Task** and configure it:
   - **Task Name** - CheckDir_False
   - **Type** - Execute
   - **Script Type** - EScript
-  - **Script** - print "Given Logs Directory doesn't exists"
+  - **Script**
+
+.. code-block:: bash
+   :linenos:
+   
+   print "Given Logs Directory doesn't exists"
 
 Under **True** click **Add Task** and configure it:
 
   - **Task Name** - CheckDir_True
   - **Type** - Set Variable
   - **Script Type** - Shell
-  - **Script** - echo "size_before_cleanup="$(sudo du -d 0 @@{log_path}@@ | awk  "{print $1}")
   - **Output** - size_before_cleanup
+  - **Script** 
+
+.. code-block:: python
+   :linenos:
+   
+   echo "size_before_cleanup="$(sudo du -d 0 @@{log_path}@@ | awk  "{print $1}")
 
 Click **Add Task** and configure it:
 
@@ -112,15 +122,27 @@ Click **Add Task** and configure it:
   - **Task Name** - StoreLogsSizeAfterCleanup
   - **Type** - Set Variable
   - **Script Type** - Shell
-  - **Script** - echo "size_after_cleanup="$(sudo du -d 0 @@{log_path}@@ | awk  "{print $1}")
   - **Output** - size_after_cleanup
+  - **Script**
+
+.. code-block:: bash
+   :linenos:
+   
+   echo "size_after_cleanup="$(sudo du -d 0 @@{log_path}@@ | awk  "{print $1}")
+
 
 Click **Add Task** and configure it:
 
   - **Task Name** - FinalOutput
   - **Type** - Execute
   - **Script Type** - EScript
-  - **Script** - print 'logs size changed from @@{size_before_cleanup}@@ => @@{size_after_cleanup}@@'
+  - **Script**
+
+.. code-block:: python
+   :linenos:
+   
+   print 'logs size changed from @@{size_before_cleanup}@@ => @@{size_after_cleanup}@@'
+
 
 Click **Save** in the top right.
 

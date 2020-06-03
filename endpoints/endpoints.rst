@@ -69,7 +69,7 @@ Click **Services** in the top Menu and expand the VMs by clicking |expand|.
 
 .. |expand| image:: images/expand.png
 
-Click on each Service and note down the IP Address which will be displayed on the right hand side. 
+Click on a Service and note down the IP Address which will be displayed on the right hand side. 
 
 -----------------------------------------------------
 
@@ -81,7 +81,8 @@ Fill out the following fields:
 
   - **Name** - *initials*_endpoint
   - **Description** - Endpoint for all Linux VMs
-  - **IP Addresses** - *Insert the IPs you noted down earlier*
+  - **Project** - BootcampInfra
+  - **IP Addresses** - *Insert the IP you noted down earlier* (make sure to only add one IP, even though multiple IPs are possible as shown in the screenshot below)
   - **Credentials - Username** - centos
   - **Credentials - Secret Type** - SSH Private Key
   - **Credentials - SSH Private Key** - *Copy & Paste the Key listed earlier*
@@ -93,6 +94,7 @@ Click **Save**.
 .. note::
 
   The Public Key needs to be defined in the Blueprint and added to the ssh-authorized-keys file, this is already done and not part of this exercise, but still important to know.
+  We only added one IP as we are using a Decision Task in the Runbook which will be created in the next exercise. Decision Tasks currently only support single IP Endpoints.
 
 We now have an Endpoint which can be used by a Runbook to access all Linux VMs. 
 

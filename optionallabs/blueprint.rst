@@ -35,7 +35,7 @@ You will create a new, blank Blueprint.
 
    - **Name** - MyVM-*Initials*
    - **Description** - My First Endpoint Blueprint
-   - **Project** - *Initials*-Calm
+   - **Project** - BootcampInfra
 
 
 #. From the toolbar along the top of the blueprint, click **Credentials**.
@@ -154,6 +154,7 @@ Now that you have completed the deployment details for the VM associated with th
    - **Type** - Set Variable
    - **Script Type** - Shell
    - **Enpoint** - Endpoint_LinuxToolsVM
+   - **Output** - MYVAR
    - **Script** -
 
      .. code-block:: bash
@@ -163,7 +164,8 @@ Now that you have completed the deployment details for the VM associated with th
    .. figure:: images/fetchToken.png
 
   
-   Reviewing the script you can see the package will fetch the content of a file on the Endpoint and store it in our MYVAR Variable
+   Reviewing the script you can see the package will fetch the content of a file on the Endpoint and store it in our MYVAR Variable.
+   Click **Save**.
 
 
 
@@ -187,6 +189,9 @@ Create Endpoints Automatically leveraging our API
 Go back into the Blueprint Menu Clicking |blueprint_menu| > **MyVM**-*initials*
 
 .. |blueprint_menu| image:: images/blueprint_menu.png
+
+Select the **MyVM** service. In the **Configuration Pane**, select the **Service** tab. Add a variable named **endpoint_uuid**, leaving all other fields blank.
+
 
 Click **Services** > **MyVM** > **Package** > **Install**
 Now add another Task by clicking the **+ Task** and add the following info:
